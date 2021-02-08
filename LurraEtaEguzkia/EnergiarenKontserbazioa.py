@@ -96,7 +96,6 @@ if __name__ == "__main__":
     fig.text(0.5, 0.95, "TOTALA", ha="center", va="bottom", size="large")
     fig.text(0.75,0.95,"ZINETIKOA", ha="center", va="bottom", size="large",color="green")
     plt.ylim((-0.0004, 0.0002))
-    kont = 0
 
     for t in range(0, loop):
         ax, ay = axy()
