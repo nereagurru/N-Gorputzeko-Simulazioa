@@ -114,5 +114,5 @@ if __name__ == "__main__":
 print('Sistema honen bataz besteko energia ' + str(round(np.average(Ebb), 6)) + ' da eta desbiderapen estandarra ' + str(round(np.std(Ebb), 9)))
 print('Programa honek ' + str(round(time.time() - iraupena, 2)) + 's behar izan ditu exekutatzeko')         
 
-plt.savefig(fname='EnergiaTotala.jpg')
+plt.savefig(fname='EnergiaTotala.png')
 plt.show()
