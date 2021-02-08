@@ -60,7 +60,7 @@ def aurrekoa_bete():
 if __name__ == "__main__":
     
     aber = time.time()
-    h = 0.0001
+    h = 1
     aurrekoa_bete()
     ax, ay = axy()
     vx = vx - ax*h/2
@@ -78,17 +78,17 @@ if __name__ == "__main__":
 
     ardatz.set_aspect('equal', adjustable='box')
     kont = 0
-    for t in range(0, 4000000):
+    for t in range(0, 400):
         ax, ay = axy()
         vx = vx + ax*h
         vy = vy + ay*h
         x = x + vx*h
         y = y + vy*h
-        if t%100000 == 0:    
+        if t%10 == 0:    
             plt.scatter(x[0], y[0], color = 'blue', linewidths=0.5)
             plt.scatter(x[1], y[1], color = 'red', linewidths=0.5)
             
-        if t%1000000 == 0 or t%3650000 == 0:
+        if t%100 == 0 or t%365 == 0:
             izena = str(kont) + '.png'
             plt.title('t = ' + str(h*t) + ' egun\n')
             plt.savefig(fname = izena)
