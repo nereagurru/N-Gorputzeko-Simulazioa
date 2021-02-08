@@ -89,10 +89,12 @@ if __name__ == "__main__":
     fig = plt.figure()
     ardatz = fig.add_subplot(111)
 
-    plt.ylabel(r'$E_{T} \; (M_{\oplus} \;AU^{-2} \;egun^{-2})$')
+    plt.ylabel(r'$E \; (M_{\oplus} \;AU^{-2} \;egun^{-2})$')
     plt.xlabel('t (egun)')
 
-    #plt.ylim((-0.00014796395,-0.00014796390))
+    fig.text(0.25, 0.95, "POTENTZIALA", ha="center", va="bottom", size="large",color="purple")
+    fig.text(0.5, 0.95, "TOTALA", ha="center", va="bottom", size="large")
+    fig.text(0.75,0.95,"ZINETIKOA", ha="center", va="bottom", size="large",color="green")
     plt.ylim((-0.0004, 0.0002))
     kont = 0
 
@@ -112,5 +114,5 @@ if __name__ == "__main__":
 print('Sistema honen bataz besteko energia ' + str(round(np.average(Ebb), 6)) + ' da eta desbiderapen estandarra ' + str(round(np.std(Ebb), 9)))
 print('Programa honek ' + str(round(time.time() - iraupena, 2)) + 's behar izan ditu exekutatzeko')         
 
-plt.savefig(fname='EnergiaTotala.png')
+plt.savefig(fname='EnergiaTotala.jpg')
 plt.show()
