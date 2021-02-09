@@ -11,13 +11,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # --------KONSTANTEAK-------------#
-global m, G, N, eps, x, y, vx, vy, aurrekoa, loop, Ebb
+global m, G, N, eps, x, y, vx, vy, loop, Ebb
 N = 2
 loop = 1000
 G = 8.888*math.pow(10, -10)
 eps = math.pow(10, -5)
 
-aurrekoa = np.zeros([N, N])
 m = np.array([333000, 1.0])
 x = np.array([0.00, 0.983])
 y = np.array([0.0, 0.0])
@@ -28,7 +27,7 @@ Ebb = np.empty((loop))
 
 
 def axy():
-    global x, y, aurrekoa, eps, N, m
+    global x, y, eps, N, m
     """
     Grabitatearen ondorioz elkarrekintzak jasatzen dituzten partikulen
     azelerazioa kalkulatzeko funtzioa 2D-tan.
@@ -45,19 +44,9 @@ def axy():
 
     matrixx = (G*m*np.power(Rlagun, -3))*xij
     matrixy = (G*m*np.power(Rlagun, -3))*yij
-    aurrekoa = Rlagun - np.identity(N)*Rlagun
 
     return np.sum(matrixx, axis=1), np.sum(matrixy, axis=1)
 
-
-def aurrekoa_bete():
-    global aurrekoa, x, y, N
-    """
-    aurrekoa aldagai globala hasieratu partikulen arteko distantziekin
-    """
-    xij = np.power(np.ones([N, N])*x - np.transpose(np.ones([N, N])*x), 2)
-    yij = np.power(np.ones([N, N])*y - np.transpose(np.ones([N, N])*y), 2)
-    aurrekoa = np.power(xij + yij, 0.5)
 
 def energia(ax, ay):
     """
@@ -81,7 +70,6 @@ if __name__ == "__main__":
     
     iraupena = time.time()
     h = 1
-    aurrekoa_bete()
     ax, ay = axy()
     vx = vx - ax*h/2
     vy = vy - ay*h/2
