@@ -76,8 +76,6 @@ if __name__ == "__main__":
     plt.xlabel('x (AU)')
     plt.xlim((-1.5, 1.5))
     plt.ylim((-1.5, 1.5))
-    plt.title('Lurra eta Eguzkia Maiatzaren 14an')
-
     kont = 0
     ardatz.set_aspect('equal', adjustable='box')
     for t in range(0, loop):
