@@ -64,7 +64,7 @@ def aurrekoa_bete():
 if __name__ == "__main__":
 
     iraupena = time.time()
-    h = 0.0001
+    h = 0.001
     aurrekoa_bete()
     ax, ay = axy()
     vx = vx - ax*h/2
