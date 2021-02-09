@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 
 # --------KONSTANTEAK-------------#
-global m, G, N, eps, x, y, vx, vy, aurrekoa, loop, Ebb
+global m, G, N, eps, x, y, vx, vy, aurrekoa, loop
 N = 2
 loop = 10000000
 G = 8.888*math.pow(10, -10)
