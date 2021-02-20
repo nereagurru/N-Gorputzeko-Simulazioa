@@ -78,4 +78,4 @@ if __name__ == "__main__":
             plt.savefig(fname = izena)
             kont = kont + 1
 
-print('Programa honek ' + str(aber - time.time()) + 's behar izan ditu exekutatzeko')
+print('Programa honek ' + str(time.time() - aber) + 's behar izan ditu exekutatzeko')
