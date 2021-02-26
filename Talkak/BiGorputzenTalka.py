@@ -23,8 +23,9 @@ G = 1
 w = math.pow(k/mtot, 0.5)
 gamma = w
 """
-gamma < w jarriz gero bi partikulak oszilatzen
+gamma < w jarriz gero bi partikulak oszilatzen hasi itsastea lortzen bagute. v handiegia bada ez dute lortuko alde egitea.
 gamma > w jarriz gero bi partikulak itsatsi eta azkenean energia osoa galdu
+KONTUZ! abiadura handiegia bada w gamma nahiko handia izan behar da partikulak itsasteko, baina ez handiegia gehiegi alderanzteko.
 """
 m = np.full((N), mtot)
 x = np.array([1.0, 2.0])
@@ -55,9 +56,9 @@ def axyz():
     matrixy = np.zeros((N, N))
     matrixz = np.zeros((N, N))
     Rlagun = R + np.identity(N)
-    matrixx = grab*(G*m*np.power(Rlagun, -3))*xij - np.logical_not(grab)*(w*w*xij - 2*gamma*vxij)/np.transpose(m)
-    matrixy = grab*(G*m*np.power(Rlagun, -3))*yij - np.logical_not(grab)*(w*w*yij - 2*gamma*vyij)/np.transpose(m)
-    matrixz = grab*(G*m*np.power(Rlagun, -3))*zij - np.logical_not(grab)*(w*w*zij - 2*gamma*vzij)/np.transpose(m)
+    matrixx = grab*(G*m*np.power(Rlagun, -3))*xij + np.logical_not(grab)*(w*w*xij + 2*gamma*vxij)/np.transpose(m)
+    matrixy = grab*(G*m*np.power(Rlagun, -3))*yij + np.logical_not(grab)*(w*w*yij + 2*gamma*vyij)/np.transpose(m)
+    matrixz = grab*(G*m*np.power(Rlagun, -3))*zij + np.logical_not(grab)*(w*w*zij + 2*gamma*vzij)/np.transpose(m)
 
     return np.sum(matrixx, axis=1), np.sum(matrixy, axis=1), np.sum(matrixy, axis=1)
 
