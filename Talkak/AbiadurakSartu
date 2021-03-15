@@ -29,12 +29,14 @@ def talkaExis(D, N, x, y):
 
 
     talka = Rlagun < D  #talka gertatuko bada True gorde. 
-    #talkaren eragina kalkulatzeko modua aleatorioa izan behar da.
-    #Hmen posible ahal da paralelizazioa sortzea? grabitatea kalkulatzea alde 
-    #batetik behar dutenentzat, eta besteentzat talkak
     
+    #Soilik True duten elementuak golde result-en (array motako objetuak)
     result = np.where(talka==True)
+    
+    #Array-a tupla bihurtu
     listOfCoordinates = list(zip(result[0], result[1]))
+
+    #talkaren eragina kalkulatzeko modua aleatorioa izan behar da.
     random.shuffle(listOfCoordinates)
     return talka, listOfCoordinates
 
@@ -48,7 +50,8 @@ def dist(N, x, y):
 
 def talkaExekutatu(N, n, listOfCoor, x, y, vx, vy):
     """
-       2D-tan talka 
+       2D-tan talka
+       n 0 eta 1 artean dagoen parametroa da.
     """
     for i in range(0, len(listOfCoor)):
         theta = math.atan((y[listOfCoor[i][0]] - y[listOfCoor[i][1]])/(x[listOfCoor[i][0]] - x[listOfCoor[i][1]]))
@@ -67,17 +70,21 @@ def talkaExekutatu(N, n, listOfCoor, x, y, vx, vy):
         vy = sol[N:2*N]
     return vx, vy
 
+def talkaEbatzi(N, D, n, x, y, vx, vy):
+    talka, listOfCoor = talkaExis(D, N, x, y)
+    vxn, vyn = talkaExekutatu(N, n, listOfCoor, x, y, vx, vy)
+    return vxn, vyn
 
 N = 2
 x = np.array([-1, 1])
 y = np.array([-1, 1])
 vx = np.array([1, -1])
 vy = np.array([1, -2])
-talka, emaitza = talkaExis(3, N, x, y)
+
 print("Hasieran :")
 print("vx = " + str(vx))
 print("vy = " + str(vy))
-vx, vy = talkaExekutatu(N, 0.3, emaitza, x, y, vx, vy)
+vx, vy = talkaEbatzi(N, 3, 0.3, x, y, vx, vy)
 print("Talka eta gero :")
 print("vx = " + str(vx))
 print("vy = " + str(vy))
