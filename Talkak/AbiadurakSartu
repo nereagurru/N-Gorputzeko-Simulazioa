@@ -66,8 +66,10 @@ def talkaExekutatu(N, n, listOfCoor, x, y, vx, vy):
                        -(vx[listOfCoor[i][0]] - vx[listOfCoor[i][1]])*math.sin(theta) + (vy[listOfCoor[i][0]] - vy[listOfCoor[i][1]])*math.cos(theta),
                        -n*(vx[listOfCoor[i][0]] - vx[listOfCoor[i][1]])*math.cos(theta) - n*(vy[listOfCoor[i][0]] - vy[listOfCoor[i][1]])*math.sin(theta)]))
         sol = np.linalg.solve(matrix, b)
-        vx = sol[0:N]
-        vy = sol[N:2*N]
+        vx[listOfCoor[i][0]] = sol[0]
+        vx[listOfCoor[i][1]] = sol[1]
+        vy[listOfCoor[i][0]] = sol[2]
+        vy[listOfCoor[i][1]] = sol[3]
     return vx, vy
 
 def talkaEbatzi(N, D, n, x, y, vx, vy):
