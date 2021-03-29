@@ -120,7 +120,7 @@ if __name__ == "__main__":
     ax, ay, az = axyz()
     vx = vx - ax*h/2
     vy = vy - ay*h/2
-    vz = vz + az*h/2
+    vz = vz - az*h/2
 
     per = np.full([N, 1], None)
     for t in range(1, 100000):
