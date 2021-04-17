@@ -8,7 +8,6 @@ Created on Sun Mar 28 17:34:42 2021
 
 import numpy as np
 
-
 def axyz(N, G, D, m, x, y, z):
     """
         Funtzio honek partikula bakoitzaren grabitatearen ondoriozko
@@ -50,4 +49,11 @@ def axyz(N, G, D, m, x, y, z):
     matrixy = np.where(R > D, -G*np.transpose(m)*np.power(Rlagun, -3)*yij, 0)
     matrixz = np.where(R > D, -G*np.transpose(m)*np.power(Rlagun, -3)*zij, 0)
 
-    return np.sum(matrixx, axis=1), np.sum(matrixy, axis=1), np.sum(matrixz, axis=1)
+    # Talka jasaten duten elementuen azelerazioa nulua
+    eps = math.pow(10, -2)
+    lagun = np.where(R+(D+eps)*np.identity(N) > D, True, False)
+    ax = np.prod(lagun, axis=1)*np.sum(matrixx, axis=1)
+    ay = np.prod(lagun, axis=1)*np.sum(matrixy, axis=1)
+    az = np.prod(lagun, axis=1)*np.sum(matrixz, axis=1)
+
+    return ax, ay, az
